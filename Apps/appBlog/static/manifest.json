@@ -1,0 +1,10 @@
+{
+    "name": "PWA ejemplo", 
+    "short_name": "PWADJ",
+    "background_color": "#fff",    
+    "theme_color": "#555",
+    "start_url":"/app/",
+    "icons": [
+
+    ]
+}

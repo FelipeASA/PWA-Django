@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register("{% static 'serviceworker.js' %}").then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
+    <style>
+        .img {
+            width: 20%;
+        }
+
+        @media(max-width: 500px) {
+            .img {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Index.html</h2>
+                <img class="img card-img-top" src="{% static 'img/profile.png' %}" alt="Image Principal">
+            </div>
+            <div class="card-body">
+                {% for item in lista %}
+                <p>{{ item.titulo }}</p>
+                <p>{{ item.autor }}</p>
+                <p>{{ item.fecha }}</p>
+                <p>{{ item.texto }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
